@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* * {outline:1px solid red;} */
+    body {
+      margin:0;
+    }
+    .item{
+      background-color: yellow;
+      width:800px;
+      height:100%;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+    }
+
+    .container.box7{
+      height:70px;
+      background-color: #FFD86B;
+      position:fixed;
+      top:0;
+      width:100%;
+
+    }
+    .container.box1{
+      height:150px;
+      background-color: #E285B3;
+      position:fixed;
+      top:70px;
+      width:100%;
+    }
+    .container.box6{
+      height:70px;
+      background-color: #FF8EA3;
+      position:fixed;
+      top:220px;
+      width:100%;
+    }  
+    
+    .container.box3{
+      background-color: #0085CB;
+    }  
+    
+    .container.box5{
+      height:50px;
+      background-color: #FFA08D;
+    }      
+
+    .container.box7>.item.box7{
+      background-color: #FFD86B;
+      /* position:fixed; */
+    }
+
+    .container.box3>.item.box3{
+      display: flex;
+    }
+
+     .container.box3>.item.box3>.item1{
+      background-color: pink;
+      flex-grow: 1;
+     }
+     .container.box3>.item.box3>.item2{
+      background-color: greenyellow;
+      flex-grow: 1;
+     }
+     .container.box3>.item.box3>.item3{
+      background-color: beige;
+      flex-grow: 1;
+     }
+     .ad {
+      width:50px;
+      height:100vh;
+      background-color: aqua;
+      position: fixed;
+      top:0;
+      right:0;
+     }
+  </style>
+</head>
+<body>
+  <div class="container box7">
+    <div class="item box7">box7</div>
+  </div>
+  <div class="container box1">
+    <div class="item box1">box1</div>
+  </div>
+  <div class="container box6">
+    <div class="item box6">box6</div>
+  </div>
+  <div class="container box3">
+    <div class="item box3">
+      <div class="item1">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque iure fugit natus dolorem minima sunt asperiores nisi reiciendis pariatur architecto exercitationem eligendi, dicta magnam possimus suscipit velit error ea? Repudiandae?
+      Deserunt ut fuga a et quos exercitationem. Nostrum eius unde enim voluptatibus veritatis, minima doloremque temporibus, quam eum, velit animi soluta facere. Adipisci debitis numquam harum eius, reprehenderit repellendus atque?</div>
+      <div class="item2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis optio illo dolore facilis harum ipsum, accusantium deserunt illum odio numquam ad omnis repellendus earum velit maiores tenetur modi at possimus.
+      Vero ipsum, qui unde reprehenderit delectus saepe. Est autem aut facilis. Quo id distinctio repellendus laborum pariatur officia inventore sed placeat facilis! Error, qui. Similique fugiat tempore debitis natus adipisci?
+      Atque est ab dignissimos molestias fuga distinctio sed? Debitis, vitae error quos at ex aliquam tenetur corporis earum optio porro nesciunt, esse eius necessitatibus possimus distinctio, asperiores impedit ullam labore.
+      Unde tempora eligendi adipisci blanditiis dolor repellendus ipsam atque in! Beatae iure amet neque harum quasi consectetur, libero blanditiis! Necessitatibus officiis iusto vero! Sit vero veritatis, eum voluptate commodi voluptatum!
+      Consectetur ea eaque odio aspernatur totam dolores id accusantium, porro omnis non, exercitationem ratione minus labore cum culpa facere, at beatae ipsam? Quis hic accusamus suscipit harum nihil magni illum.
+      Necessitatibus aspernatur nobis doloribus dignissimos ab totam voluptatem id beatae nihil, consequuntur ipsam culpa delectus sunt deserunt porro laboriosam, numquam impedit iure veritatis. Fugiat voluptas esse enim sit eveniet alias!
+      Facere nostrum ex voluptas id amet dicta recusandae repellendus perspiciatis, doloremque voluptatum fuga molestias sequi atque esse dolorem ad quas quisquam reprehenderit earum nihil odit exercitationem praesentium distinctio deserunt. Facilis.
+      In error animi, velit dolore nobis exercitationem, harum reprehenderit, nostrum libero et aliquam debitis id accusantium omnis nemo molestias perferendis beatae fugiat officia. Maiores ex at laborum voluptatibus nam aut.
+      Sunt quisquam consequuntur debitis saepe vero, totam nulla vitae corrupti! Nostrum vero sed quo nulla maiores! Officia architecto quisquam vero sit harum atque illum, expedita neque eveniet molestias enim possimus?
+      Cum non quidem consectetur hic incidunt. Earum ratione fuga nemo tempora nisi quidem quod perferendis, officia architecto facere delectus quos. Tempora nihil ducimus sed repellat iure necessitatibus quibusdam pariatur doloribus?</div>
+      <div class="item3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi, libero? Iusto ducimus, amet debitis accusantium consequuntur voluptas at voluptatum omnis rerum, nulla nobis saepe iste? Asperiores, provident alias. Maxime, non.
+      Id blanditiis repellendus placeat cumque et cum officiis, laudantium eveniet veniam laboriosam amet nisi repudiandae dignissimos iusto dicta iure enim eos tempora adipisci consequuntur illo libero? Assumenda tenetur dolorem repellendus.</div>
+    </div>
+  </div>
+  <div class="container box5">
+    <div class="item box5">box5</div>
+  </div>
+
+  <div class="ad">
+    광고
+  </div>
+</body>
+</html>

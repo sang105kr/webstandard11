@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        outline: 1px solid red;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      :root{
+        /* 전경색 */
+        --color-font1 : #111;
+        --color-font2 : #7d7d7d;
+        --color-font3 : #f0f;
+
+        /* 배경색 */
+        --color-bg1 : #f00;
+
+        /* 폰트 사이즈 */
+        --font-size-xl : 20px;
+        --font-size-l : 18px;
+        --font-size-m :  12px;
+        --font-size-sm : 10px;
+        --font-size-xs : 8px;
+
+        /* 여백 */
+        --padding-size : 12px;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .footer {
+        text-transform: uppercase;
+      }
+
+      .footer .footer__top {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        height: 50px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid gray;
+      }
+
+      .footer .footer__body {
+        color:var(--color-font1);
+      }
+
+      .footer .footer__body .footer__content,
+      .footer .footer__body .footer__icons,
+      .footer .footer__body .footer__copyright {
+        display: flex;
+        justify-content: center;
+      }
+
+      .footer .footer__body .footer__content {
+        padding: 20px 0;
+      }
+
+      .footer .footer__body .footer__content .title {
+        font-weight: bold;
+      }
+
+      .footer .footer__body .footer__content .footer__content1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        margin-right: 50px;
+        width: 150px;
+        height: 150px;
+
+        background-color: #F1381F;
+        color:#ffe;
+      }
+      .footer .footer__body .footer__content .footer__content2 {
+        margin-right: 50px;
+      }
+      .footer .footer__body .footer__content .footer__content2 .strong-01{
+        color: var(--color-font3);
+        font-weight: bold;
+      }
+      .footer .footer__body .footer__content .footer__content3 {
+        margin-right: 50px;
+      }
+
+      .footer .footer__body .footer__icons,
+      .footer .footer__body .footer__copyright {
+        padding: 20px 0;
+      }
+    </style>
+    <script
+      src="https://kit.fontawesome.com/023d8f21ed.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="footer">
+      <div class="footer__top">푸터 상단쪽에 들어갈 내용</div>
+      <div class="footer__body">
+        <div class="footer__content">
+          <div class="footer__content1">airmall</div>
+          <div class="footer__content2">
+            <p class="title">policy</p>
+            <p><a href="#">home</a></p>
+            <p><a href="#">agreement</a></p>
+            <p><a href="#" class="strong-01">site policy</a></p>
+            <p><a href="#">membership</a></p>
+          </div>
+          <div class="footer__content3">
+            <p class="title">customer center</p>
+            <p>평일 : 오전9:00 ~ 오후18:00</p>
+            <p>점심 : 오후12:00 ~ 오후13:00 토/일/공휴일 휴무</p>
+            <p class="tel">
+              <i class="fa-solid fa-phone-volume"></i>070-1234-5678
+            </p>
+            <p class="account">국민은행:015-13413-123-01(예금주:홍길동)</p>
+            <p class="account">농협은행:15413-123-01(예금주:홍길동)</p>
+          </div>
+          <div class="footer__content4">
+            <p class="title">commpay information</p>
+            <p>
+              company:
+              <span class="highlight-01">에어몰</span> proprietor:홍길동, 이순신
+            </p>
+            <p>TEL: 070-1234-5678 E-MAIL : WEBMASTER@HOTMAIL.COM</p>
+            <p>ADDRESS1 : 서울 서초구 양재동 147-15번지 임호물산 418호</p>
+            <p>
+              ADDRESS2 : 서울 강남구 봉은사로 25-48번지 충청빌딩 102호 (물류장소
+              및 배송지 주소)
+            </p>
+            <p>BUSINESS LICENSE : 417-24-78612</p>
+            <p>
+              MAIL ORDER LICENSE : 제2022-서울서초-0817호 [
+              <span class="highlight-02">사업자정보확인</span> ]
+            </p>
+            <p>PERSONAL INFO MANAGER : 강감찬</p>
+          </div>
+        </div>
+        <div class="footer__icons">
+          <i class="fa-solid fa-music"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-car"></i>
+          <i class="fa-solid fa-spinner"></i>
+          <i class="fa-solid fa-arrows-spin"></i>
+        </div>
+        <div class="footer__copyright">
+          COPYRIGHT(C) AIRMALL ALL RIGHT RESERVED. DESIGNED BY TESTKOREA DESIGN
+          3.0 VERSION.
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

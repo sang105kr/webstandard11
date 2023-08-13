@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      outline: 1px solid red;
+    }
+    .container {
+      display: grid;
+      grid-template-areas: 
+        "header header header"
+        "aside_1 main aside_2"
+        "footer footer footer";
+    }
+    .container .item.item1{
+      grid-area: header;
+      height:80px;
+    }
+    .container .item.item2{
+      grid-area: aside_1;
+    }
+    .container .item.item3{
+      grid-area: main;
+    }
+    .container .item.item4{
+      grid-area: aside_2;
+    }
+    .container .item.item5{
+      grid-area: footer;
+      height:50px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="item item1">item1</div>
+    <div class="item item2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab, asperiores optio cum temporibus laborum quis nisi ea illum doloremque minima, eos excepturi. Nostrum blanditiis omnis id nihil nisi quia exercitationem.</div>
+    <div class="item item3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam aperiam reiciendis, odio, doloremque ex unde tenetur officiis libero blanditiis quia eaque quos delectus iusto magni? Mollitia nulla reprehenderit cum doloremque?
+    Labore eligendi deserunt cupiditate id mollitia earum quod dolor veritatis nulla quidem. Praesentium debitis maxime beatae quidem ducimus officiis quod repudiandae unde vero, blanditiis corrupti fugiat! Aperiam iusto officia temporibus.
+    Ea minus reiciendis distinctio non a expedita deserunt blanditiis. Repellat, temporibus dolorum corporis numquam fugit exercitationem non accusantium nesciunt. Voluptates cum eum non voluptatem facilis consequuntur mollitia voluptas quisquam iure!</div>
+    <div class="item item4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis, harum accusantium, placeat blanditiis sapiente voluptatibus perspiciatis tenetur vitae, natus praesentium ipsum ab porro modi aut ducimus voluptate dolore. Cupiditate, aliquam.</div>
+    <div class="item item5">item5</div>
+  </div>
+</body>
+</html>

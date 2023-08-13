@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      outline:1px solid red;
+    }
+
+    .container {
+      background-color: yellow;
+      padding:5px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+    }
+
+    .container .item.item1 {
+      background-color: red;
+      flex : 1; /* flex-grow: 1; flex-shrink: 1; flex-basis: 0%; */
+    }
+    .container .item.item2 {
+      background-color: green;
+      flex : 1;
+      order:3;
+    }
+    .container .item.item3 {
+      background-color: blue;
+      flex : 1;
+      transition: all .3s;
+    }
+    .container .item.item3:hover{
+      background-color: pink;
+      transform: scale(1.2);
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="item item1">item1</div>
+    <div class="item item2">item2</div>
+    <div class="item item3">item3</div>
+  </div>
+</body>
+</html>
