@@ -1,121 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <!-- fontawesome-->
-  <script src="https://kit.fontawesome.com/023d8f21ed.js" crossorigin="anonymous"></script>
-  <style>
-    * {
-      /* outline:1px solid red; */
-    }
-    * {
-      margin:0; padding:0;
-    }
-    ul {
-      list-style: none;
-    }
-    a {
-      text-decoration: none;
-      color:inherit;
-    }
-    .login {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    .login .form-wrap{
-      width:300px;
-    }
-    .login .form {
-      display: flex;
-      flex-direction: column;
-    }
-    .login .form .form__row{
-      display: flex;
-      padding:10px;
-    }
-    .login .form .form__row:nth-of-type(1){
-      justify-content: center;
-    }
-    .login .form .form__row:nth-of-type(2),
-    .login .form .form__row:nth-of-type(3){
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    .login .form .form__row:nth-of-type(4){
-      padding:10px 0;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- fontawesome-->
+    <script
+      src="https://kit.fontawesome.com/023d8f21ed.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      * {
+        /* outline:1px solid red; */
+      }
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      ul {
+        list-style: none;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      .login {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .login .form-wrap {
+        width: 300px;
+      }
+      .login .form {
+        display: flex;
+        flex-direction: column;
+      }
+      .login .form .form__row {
+        display: flex;
+        padding: 10px;
+      }
+      .login .form .form__row:nth-of-type(1) {
+        justify-content: center;
+      }
+      .login .form .form__row:nth-of-type(2),
+      .login .form .form__row:nth-of-type(3) {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      .login .form .form__row:nth-of-type(4) {
+        padding: 10px 0;
+      }
 
-    .login .form .form__row i{
-      margin-right:10px;
-    }
-     .login .form .form__row .form__item {
-      flex:1;
-      border: none;
-      outline: none;
-     }
-    .login .form .title{
-      padding: 10px 0;
-    }
-    .login .form .form__btn {
-      width:100%;
-      padding:5px;
-      border:1px solid #03C75A;
-      background-color: #03C75A;
-      color:#fff;
-      font-weight: 900;
-    }
-    .login .menu {
-      display: flex;
-      justify-content: space-around;
-      padding:10px 0;
-    }
-    .login .menu .item:hover a{
-      text-decoration: underline;
-    }
-    .login .menu .item a:before{
-      content:'a';
-      position:absolute;
-      
+      .login .form .form__row i {
+        margin-right: 10px;
+      }
+      .login .form .form__row .form__item {
+        flex: 1;
+        border: none;
+        outline: none;
+      }
+      .login .form .title {
+        padding: 10px 0;
+      }
+      .login .form .form__btn {
+        width: 100%;
+        padding: 5px;
+        border: 1px solid #03c75a;
+        background-color: #03c75a;
+        color: #fff;
+        font-weight: 900;
+      }
+      .login .menu {
+        display: flex;
+        justify-content: space-around;
+        padding: 10px 0;
+      }
+      .login .menu  .item a{
+        position: relative;
+      }
+      /* .login .menu .item:hover a {
+        text-decoration: underline;
+      } */
+      .login .menu .item a:before {
+        content: ' ';
+        position: absolute;
+        border:2px solid #ccc;
+        
+        /* border-top-color:transparent;
+        border-right-color:transparent;
+        border-bottom-color:red;
+        border-left-color:transparent; */
+        bottom:-3px;
+        left:0;
+        opacity: 0;  /*투명도*/
+        transition: border 100ms;
+      }
+      .login .menu .item:hover a:before {
+        right:0;
+        opacity: 1;  /*투명도*/
+      }
 
-    }
-    /* .login .menu .item:hover a:after{
-      content:'a';
-      position:absolute;
-    } */
-
-
-
-  </style>
-</head>
-<body>
-  <div class="login">
-    <div class="form-wrap">
-      <form action="" class="form">
-        <div class="form__row">
-          <h3 class="title">로그인</h3>
-        </div>
-        <div class="form__row">
-          <i class="fa-regular fa-user"></i>
-          <input type="text" class="form__item form__id" placeholder="아이디">
-        </div>
-        <div class="form__row">
-          <i class="fa-solid fa-key"></i>
-          <input type="text" class="form__item form__pw" placeholder="비밀번호">
-        </div>
-        <div class="form__row">
-          <input type="submit" value="로그인" class="form__btn form__btn--disable">
-        </div>
-      </form>
-      <ul class="menu">
-        <li class="item"><a href="#">회원가입</a></li>
-        <li class="item"><a href="#">아이디찾기</a></li>
-        <li class="item"><a href="#">비밀번호찾기</a></li>
-      </ul>
+    </style>
+  </head>
+  <body>
+    <div class="login">
+      <div class="form-wrap">
+        <form action="" class="form">
+          <div class="form__row">
+            <h3 class="title">로그인</h3>
+          </div>
+          <div class="form__row">
+            <i class="fa-regular fa-user"></i>
+            <input
+              type="text"
+              class="form__item form__id"
+              placeholder="아이디"
+            />
+          </div>
+          <div class="form__row">
+            <i class="fa-solid fa-key"></i>
+            <input
+              type="text"
+              class="form__item form__pw"
+              placeholder="비밀번호"
+            />
+          </div>
+          <div class="form__row">
+            <input
+              type="submit"
+              value="로그인"
+              class="form__btn form__btn--disable"
+            />
+          </div>
+        </form>
+        <ul class="menu">
+          <li class="item"><a href="#">회원가입</a></li>
+          <li class="item"><a href="#">아이디찾기</a></li>
+          <li class="item"><a href="#">비밀번호찾기</a></li>
+        </ul>
+      </div>
     </div>
-  </div>
-</body>
+    <script>
+      let formIdEle = document.querySelector('.form__id');
+      let tmp = document.querySelector('.login .form .form__row:nth-of-type(2)');
+      formIdEle.addEventListener('click',()=>{
+        // formIdEle.style.backgroundColor='yellow';
+        tmp.style.border='1px solid green';
+      });
+    </script>
+  </body>
 </html>
