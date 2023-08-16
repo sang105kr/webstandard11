@@ -98,12 +98,30 @@
         border-right-color:transparent;
         border-bottom-color:red;
         border-left-color:transparent; */
-        bottom:-3px;
+        top:-3px;
+        left:0;
         width:0;
-        transition: all 0.5s ease;
+        transition: width .5s ease;
         opacity: 0;
       }
-      .login .menu .item:hover a:before {
+      .login .menu .item a:after {
+        content: ' ';
+        display: inline-block;
+        position: absolute;
+        border:1px solid #ccc;
+        
+        /* border-top-color:transparent;
+        border-right-color:transparent;
+        border-bottom-color:red;
+        border-left-color:transparent; */
+        bottom:-3px;
+        left:0;
+        width:0;
+        transition: width .5s ease;
+        opacity: 0;
+      }
+      .login .menu .item:hover a:before,
+      .login .menu .item:hover a:after {
         opacity: 1;
         width:100%;
       }
