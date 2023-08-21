@@ -132,7 +132,7 @@
   <body>
     <div class="login">
       <div class="form-wrap">
-        <form action="" class="form">
+        <form action="서버프로그램URL" class="form" method="get">
           <div class="form__row">
             <h3 class="title">로그인</h3>
           </div>
@@ -142,14 +142,16 @@
               type="text"
               class="form__item form__id"
               placeholder="아이디"
+              name = 'id'
             />
           </div>
           <div class="form__row">
             <i class="fa-solid fa-key"></i>
             <input
-              type="text"
+              type="password"
               class="form__item form__pw"
               placeholder="비밀번호"
+              name = 'pw'
             />
           </div>
           <div class="form__row">
