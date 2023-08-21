@@ -10,13 +10,13 @@
   }
 }
 
-// function times(x) {
-//   return function(y){
-//     return y * x;
+// function times(y) {
+//   return function(x){
+//     return x * y;
 //   };
 // }
 
-const times = x => y => y * x;
+const times = y => x => x * y;
 
 const f2 = times(2);
 console.log(f2(10));
