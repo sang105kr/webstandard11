@@ -19,6 +19,7 @@ Person.prototype.eat = function () {
 };
 //인스턴스 
 const p1 = new Person('홍길동',30);
+const p2 = new Person('홍길순',20);
 // p1.name = '홍길동';
 // p1.age = 30;
 
