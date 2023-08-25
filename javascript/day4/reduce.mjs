@@ -31,13 +31,15 @@ persons.data.map(person=>person.score) // [80,90,100]
 console.log(result);
 
 //case2)
-let value = persons.data.reduce((acc,person)=>{
-                if(typeof(acc) == 'object') {
-                  return acc.score + person.score;
-                }else {
-                  return acc + person.score;
-                }
-            });
+// let value = persons.data.reduce((acc,person)=>{
+//                 if(typeof(acc) == 'object') {
+//                   return acc.score + person.score;
+//                 }else {
+//                   return acc + person.score;
+//                 }
+//             });
+let value = persons.data.reduce((acc,person)=>(typeof(acc) == 'object') ? acc.score + person.score : acc + person.score);
+
 console.log(value);
 // 1회차 - acc : { name: '홍길동', age: 30, gender: '남', score: 80 }
 //         person : { name: '홍길남', age: 10, gender: '남', score: 90, }
