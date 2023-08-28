@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .wrap {
+      display: flex;
+      width:100vh; height:100vh;
+      justify-content: center;
+      align-items: center;
+    }
+    .box1 {
+      display: flex;
+      width:150px; height:150px;
+      justify-content: center;
+      align-items: center;
+      background-color: red;
+    }
+    .box2 {
+      display: flex;
+      width:100px; height:100px;
+      justify-content: center;
+      align-items: center;
+      background-color: green;
+    }
+    .box3 {
+      width:50px; height:50px;
+      background-color: blue;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="box1">
+      <div class="box2">
+        <div class="box3">
+          contents
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+   
+    document.querySelector('.box1')
+            .addEventListener('click',e=>{
+              console.log('버블링단계:box1');
+            });
+    document.querySelector('.box1')
+            .addEventListener('click',e=>{
+              console.log('캡처링단계:box1');
+            },true);      
+    document.querySelector('.box2')
+            .addEventListener('click',e=>{
+              console.log('버블링단계:box2');
+            });
+    document.querySelector('.box2')
+            .addEventListener('click',e=>{
+              console.log('캡처링단계:box2');
+            },true);                     
+  </script>
+</body>
+</html>

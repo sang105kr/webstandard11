@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .fg-yellow {
+      background-color: yellow;
+    }
+  </style>
+</head>
+<body>
+  <nav class="gnb">
+    <ui class="menu-wrp">
+      <li class="item item1">menu1</li>
+      <li class="item item2">menu2</li>
+      <li class="item item3">menu3</li>
+    </ui>
+  </nav>
+  <div><input type="text" id="id"></div>
+  <div><button class="btn">클릭</button></div>
+  <script>
+    const $btn = document.querySelector('.btn');
+    $btn.addEventListener('mousedown', (e)=>{
+      console.log(e);
+      console.log(e.type);
+      console.log(e.target);
+      console.log(e.currentTarget);
+      console.log(e.timeStamp);
+      console.log(e.button)
+      if(e.button == 0){
+        console.log('왼쪽버튼 클릭!')
+      }else if (e.button == 1) {
+        console.log('휠버튼 클릭!')
+      }else if (e.button == 2) {
+        console.log('오른쪽버튼 클릭!')
+      };
+    });
+    const $id = document.getElementById('id');
+    $id.addEventListener('keyup',e=>{
+      if(e.key === 'Enter') {
+        console.log('엔터키가 눌려졌습니다');
+        const $li = document.querySelector('.item.item1');
+        // $li.style.backgroundColor = 'yellow';
+        $li.style['background-color'] = 'yellow';
+        $li.classList.add('fg-yellow');
+      }
+    })
+  </script>
+</body>
+</html>
