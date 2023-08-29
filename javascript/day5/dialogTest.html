@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #dialogDelete {
+      border-radius: 10%;
+      border:none;
+      box-shadow: 3px 3px 3px 0 #ccc;
+      background-color: aliceblue;
+    }
+  </style>
+</head>
+<body>
+  <button class="btn btn-delete">삭제</button>
+  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident consectetur eveniet minima? Quidem expedita nobis quibusdam eius similique corrupti atque ex aut? Aspernatur eligendi eum voluptate officia. Libero, officiis laboriosam!
+    Temporibus impedit voluptatibus ipsa ut laboriosam hic, et adipisci, molestiae error doloremque perferendis provident commodi tenetur amet accusamus, quidem dolores fugit nisi illo possimus! Odio error placeat quis sunt rerum.
+    Exercitationem sint, officia deserunt saepe animi neque labore ipsam doloribus ut, illum optio, ipsum temporibus consectetur! Id quibusdam vero sunt, alias quis nemo earum omnis accusamus, illum, soluta quam dicta.</p>
+
+  <dialog id="dialogDelete">
+    <p>삭제하시겠습니까?</p>
+    <menu>
+      <button class="btn btn-modal-delete">삭제</button>
+      <button class="btn btn-modal-cancel">취소</button>
+    </menu>
+  </dialog>
+  <script>
+    const $dialogDelete = document.getElementById('dialogDelete');
+    const $btnDelete = document.querySelector('.btn-delete');
+    const h_delete = e => {
+      dialogDelete.showModal();
+    }
+    $btnDelete.addEventListener('click',h_delete,false);
+
+    //모달창 삭제버튼 클릭시
+    document.querySelector('.btn-modal-delete')
+            .addEventListener('click',e=>{
+                console.log('모달-삭제버튼');
+                //삭제 로직
+                $dialogDelete.close();
+            });  
+    //모달창 취소버튼 클릭시
+    document.querySelector('.btn-modal-cancel')
+            .addEventListener('click',e=>{
+                console.log('모달-취소버튼');
+                //이벤트 핸들러 내에서 this는 이벤트 타겟
+                $dialogDelete.close();
+            });  
+  </script>
+</body>
+</html>

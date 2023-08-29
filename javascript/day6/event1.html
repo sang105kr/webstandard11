@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button class="btn">클릭</button>
+  <script>
+    //이벤트 타겟
+    const $btn = document.querySelector('.btn');  // HTMLButtonElement
+    const h_click = e => {
+      console.log(e);
+      alert(e.target);
+    }
+    $btn.addEventListener('click',h_click,true);  //캡처링
+    $btn.addEventListener('click',h_click,false); //버블링
+  </script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {margin:0; padding:0}
+    ul {
+      list-style-type: decimal;
+      padding-left: 30px;
+    }
+
+    #dialogDelete {
+      margin: 0 auto;
+      margin-top : 200px;
+    }
+
+    .msg--err {
+      color : red;
+      font-weight: bold;
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h3>할일 목록</h3>
+    <div>
+      <input type="text" class="todo">
+      <button class="btn btn-write">등록</button>
+    </div>
+    <p class="msg msg--err"> </p>
+    <ul class="list">
+      <!-- <li class="item">
+        <span class="item-text">책읽기</span>
+        <button class="btn btn-delete">삭제</button>
+        <button class="btn btn-modify">수정</button>
+      </li> -->
+    </ul>
+    <template id="todoItemTemplate">
+      <li class="item">
+        <span class="item-text">책읽기</span>
+        <button class="btn btn-delete">삭제</button>
+        <button class="btn btn-modify">수정</button>
+      </li>
+    </template>
+    <dialog id="dialogDelete">
+      <p>삭제하시겠습니까?</p>
+      <menu>
+        <button class="btn btn-modal-delete">삭제</button>
+        <button class="btn btn-modal-cancel">취소</button>
+      </menu>
+    </dialog>
+  </div>
+  <script>
+    const $todo = document.querySelector('.todo');
+    const $btnWrite = document.querySelector('.btn-write');
+    const $list = document.querySelector('.list');
+    const $errMsg = document.querySelector('.msg--err');
+
+    const $dialogDelete = document.getElementById('dialogDelete');
+
+    //이벤트 핸들러
+    const h_write = e => {
+      console.log(e);
+      console.log($todo.value);
+
+      if(e.type === 'keyup' && e.key !== 'Enter') return;
+
+      if($todo.value.trim().length == 0) {
+        $errMsg.textContent = '할일을 등록바랍니다';
+        $todo.focus();
+        return;
+      }        
+
+      const template = document.getElementById('todoItemTemplate');
+      // template의 컨텐츠 복제
+      const $li = template.content.cloneNode(true);
+      
+      // todo항목을 입력값으로 변경
+      $li.querySelector('.item-text').textContent = $todo.value;
+      
+      const $btnDelete = $li.querySelector('.btn-delete');
+      const $btnModify = $li.querySelector('.btn-modify');
+
+      //삭제버튼 클릭시
+      $btnDelete.addEventListener('click',e=>{
+        //if(!confirm('삭제하시겠습니까?')) return;
+      $dialogDelete.showModal();
+
+      const childEle = e.target.closest('li');
+
+      //모달창 삭제버튼 클릭시
+      $dialogDelete.querySelector('.btn-modal-delete')
+              .addEventListener('click',e=>{
+                  console.log('모달-삭제버튼');
+                  //삭제 로직
+                  $list.removeChild(childEle);
+                  $dialogDelete.close();
+              });  
+      //모달창 취소버튼 클릭시
+      $dialogDelete.querySelector('.btn-modal-cancel')
+              .addEventListener('click',e=>{
+                  console.log('모달-취소버튼');
+                  //이벤트 핸들러 내에서 this는 이벤트 타겟
+                  $dialogDelete.close();
+              });  
+      });
+
+      //수정버튼 클릭시
+      $btnModify.addEventListener('click',e=>{console.log('수정')});
+
+      // ul의 자식 요소로 $li 추가
+      $list.appendChild($li);
+
+      // 입력필드 클리어
+      $todo.value = '';
+      $errMsg.textContent = '';
+    }
+
+    //이벤트 등록
+    $btnWrite.addEventListener('click',h_write);
+    $todo.addEventListener('keyup',h_write);
+
+  </script>
+</body>
+</html>
