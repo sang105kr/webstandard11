@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button class="btn-del">클릭</button>
+    <script type="module">
+      import {makeDialog}  from './common.mjs';
+    
+    //   const makeDialog = (title,btn1,btn2)=>{
+    //     const $dialog = document.createElement('template');
+    //     $dialog.innerHTML = 
+    //     `<dialog id="dialogConfirm" style="border-radius:10%">
+    //       <p class="title">제목</p>
+    //       <menu>
+    //         <button class="btn btn1">버튼1</button>
+    //         <button class="btn btn2">버튼2</button>
+    //       </menu>
+    //     </dialog>`;
+
+    //     //제목 수정
+    //     $dialog.content.querySelector('.title').textContent = title;
+    //     $dialog.content.querySelector('.btn1').textContent = btn1;
+    //     $dialog.content.querySelector('.btn2').textContent = btn2;
+    //     return $dialog;
+    // }
+
+      const $dialog = makeDialog('삭제하시겠습니까?','삭제','취소');
+      $dialog.content.querySelector('.btn1')
+                     .addEventListener('click',e=>{
+                      console.log('삭제');
+                      e.target.closest('dialog').close();
+                    });
+      $dialog.content.querySelector('.btn2')
+                     .addEventListener('click',e=>{
+                      console.log('취소');
+                      e.target.closest('dialog').close();
+                    });                     
+      document.body.appendChild($dialog.content);
+
+      document.querySelector('.btn-del').addEventListener('click', e => {
+        console.log('클릭');
+        dialogConfirm.showModal();
+      });
+    </script>
+  </body>
+</html>

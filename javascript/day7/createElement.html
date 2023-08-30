@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <menu class="menu">
+    <!-- <li class="item" id='id'>메뉴1</li> -->
+  </menu>
+  <button class="btn btn-add"> 요소 추가</button>
+  <button class="btn btn-remove"> 요소 삭제</button>
+  <script>
+    //case1)
+    // document.querySelector('.btn.btn-add').addEventListener('click', e=> {
+    //   // 요소생성
+    //   const $li = document.createElement('li'); // <li></li>
+    //   // $li 텍스트 컨텐트추가
+    //   $li.textContent = '메뉴';                 // <li>메뉴1</li>
+    //   // $li 속성추가
+    //   $li.setAttribute('class','item');         // <li class='item'>메뉴1</li>
+    //   $li.setAttribute('id','id');              // <li class='item' id='id'>메뉴1</li>
+  
+    //   // 삽입위치 타겟
+    //   document.querySelector('.menu').appendChild($li);
+    // });
+
+    //case2) template 요소를 생성후 innerHTML로 subDOM 만들기
+    const $li = document.createElement('template');
+    $li.innerHTML = `<li class="item" id='id'>메뉴1</li>`;
+    // console.log($li);
+    // console.log($li.content.querySelector('li'));
+    $li.content.querySelector('li').textContent = '메뉴2';
+    document.querySelector('.menu').appendChild($li.content);
+
+    document.querySelector('.btn.btn-remove').addEventListener('click', e=> {
+      document.querySelector('.menu')
+              .removeChild(document.querySelector('.menu').firstElementChild);
+    });
+  </script>
+</body>
+</html>

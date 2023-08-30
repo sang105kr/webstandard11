@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .msg-err { color : red; font-weight: bold; font-size: 0.8rem; }
+  </style>
+</head>
+<body>
+  <h3>Todo List</h3>
+  <div>
+    <input type="text" class="todo" placeholder="할일을 입력하세요">
+    <button class="btn btn-write">등록</button>
+  </div>
+  <p class="msg-err"></p>
+  <ul class="list">
+    <!--읽기모드-->
+    <!-- <li class="item mode-read">
+      <span class="item-text">등산하기</span>
+      <button class="btn btn-delete">삭제</button>
+      <button class="btn btn-modify">수정</button>
+    </li> -->
+    <!--수정모드-->
+    <!-- <li class="item mode-modify">
+      <input class="item-text" type="text" value="등산하기">
+      <button class="btn btn-save">저장</button>
+      <button class="btn btn-cancel">취소</button>
+    </li> -->
+  </ul>
+  <script type="module">
+    import {makeDialog} from './common.mjs';
+
+    const $todo = document.querySelector('.todo');
+    const $btnWrite = document.querySelector('.btn.btn-write');
+    const $list = document.querySelector('.list');
+    const $msgErr = document.querySelector('.msg-err');
+
+    const h_btnWrite = e => {
+      // console.log('등록',e.type);
+
+      //필수 입력 체크
+      if($todo.value.trim().length === 0) {
+        // alert('할일을 입력하세요');
+        $msgErr.textContent = '할일을 입력하세요';
+        $todo.focus();
+        return;
+      }else{
+        $msgErr.textContent = '';
+      }
+
+      if(e.type === 'keyup' && e.key !== 'Enter') {
+        return;
+      }
+
+      // todo list에 todo 추가하기
+      // 1.subdom만들기
+      const $li_mode_read = document.createElement('template');
+      $li_mode_read.innerHTML =
+      `<li class="item mode-read">
+        <span class="item-text">등산하기</span>
+        <button class="btn btn-delete">삭제</button>
+        <button class="btn btn-modify">수정</button>
+        </li>`;
+      
+      // 2. todo입력 내용 읽어오기
+      $li_mode_read.content.querySelector('.item-text').textContent =  $todo.value;
+
+      // 3. button 이벤트 리스너 등록
+
+      // 삭제 핸들러
+      const h_delete = e=>{
+          console.log('삭제');
+          const $li = e.target.closest('li');
+         
+          const $dialog = makeDialog('삭제하시겠습니까?','삭제','취소');
+          $dialog.content.querySelector('.btn1')
+                        .addEventListener('click',e=>{                         
+                          $list.removeChild($li);
+                          e.target.closest('dialog').close();
+                        });
+          $dialog.content.querySelector('.btn2')
+                        .addEventListener('click',e=>{
+                          e.target.closest('dialog').close();
+                        });   
+
+          // dialogConfirm 요소 유무 체크해서 없으면 body에 추가 있으면 대체              
+          if(!document.getElementById('dialogConfirm')){                  
+             document.body.appendChild($dialog.content);
+          }else{
+             document.body.replaceChild($dialog.content,dialogConfirm); 
+          }
+
+          document.getElementById('dialogConfirm').showModal();
+      }
+      // 삭제버튼 클릭
+      $li_mode_read.content.querySelector('.btn-delete')
+                   .addEventListener('click', h_delete);  
+
+      // 수정 핸들러
+      const h_modify = e => {
+        console.log('수정');
+        const $li_mode_modify = document.createElement('template');
+        $li_mode_modify.innerHTML =
+          `<li class="item mode-modify">
+            <input class="item-text" type="text" value="등산하기">
+            <button class="btn btn-save">저장</button>
+            <button class="btn btn-cancel">취소</button>
+          </li>`;
+        
+        const $li = e.target.closest('li');
+        const todoText = $li.firstElementChild.textContent;
+        $li_mode_modify.content.querySelector('.item-text').value = todoText;
+        
+        //저장버튼 클릭
+        const h_save = e => {
+          console.log('저장');
+          $li.firstElementChild.textContent = e.target.closest('li').firstElementChild.value;
+          $list.replaceChild($li ,e.target.closest('li'));
+        }
+        $li_mode_modify.content.querySelector('.btn-save')
+                       .addEventListener('click',h_save);
+
+        //취소버튼 클릭
+        const h_cancel = e => {
+          console.log('취소');
+          $list.replaceChild( $li, e.target.closest('li'));
+        }
+        $li_mode_modify.content.querySelector('.btn-cancel')
+                       .addEventListener('click',h_cancel);
+
+        // parentElement.replaceChild(new,old)
+        $list.replaceChild($li_mode_modify.content, $li);  
+
+      }             
+      // 수정버튼 클릭                   
+      $li_mode_read.content.querySelector('.btn-modify')
+                           .addEventListener('click', h_modify);  
+
+
+      // 4. todo list에 todo 추가
+      $list.appendChild($li_mode_read.content);
+    
+      $todo.value = '';// 입력필드 클리어
+      $todo.focus();   // 입력필드에 포커스주기
+      
+    }
+
+    // 등록버튼 클릭
+    $btnWrite.addEventListener('click',h_btnWrite);
+    $todo.addEventListener('keyup',h_btnWrite);
+
+  </script>
+</body>
+</html>
