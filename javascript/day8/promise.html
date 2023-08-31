@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    console.log('로직1');
+    const promise = new Promise( (resolve,reject)=>{
+      // 서버와의 통신 또는 시간이 오래걸리는 작업
+      // 서버에서 회원정보 가져오기 fethc();
+      let result = `[{'홍길동',20},{'홍길순',30}]`; 
+      let flag = true;
+      //성공일때
+      if(flag){
+        resolve(result);
+      }else {  
+      //실패일때
+        reject(new Error('오류발생'));
+      }
+    } );
+
+    promise.then( (result)=>{console.log('1',result);return result} )
+           .finally(()=>{console.log('처리중')})
+           .then( (result)=>{console.log('2',result); throw new Error('2번작업에서 오류')} )
+           .then( (result)=>{console.log('3',result)} )
+           .catch( (err)=>{console.log(err.message)})
+           .finally(()=>{console.log('종료')});
+
+
+    console.log('로직2');
+  </script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* * {
+      outline:1px solid red;
+      padding:0; margin:0;
+    } */
+    .hidden {
+      display:none;
+    }
+    #memberJoin-wrap{
+      display: flex;
+      height:100vh;
+      justify-content: center;
+      align-items: center;
+    } 
+    #memberJoin {
+      width:350px;
+    } 
+    #memberJoin .title{
+      text-align: center;
+      letter-spacing: 0.3rem;
+    } 
+    #memberJoin .btns .btn-join{
+      width:100%;
+    }     
+    #memberJoin-wrap .row {
+      display:flex;
+      padding: 5px 3px;
+    }
+    #memberJoin-wrap .row .col.col-1{
+      width:80px;
+    }
+    #memberJoin-wrap .row .col.col-1 label {
+      display:block;
+      width:100%;
+      text-align: justify;
+      letter-spacing: 0.2rem;
+    }
+    .msg-err {
+      color : red;
+      font-weight: bolder;
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+  <div id="wrap">
+    <div id="memberJoin-wrap">
+      <form id="memberJoin" action="서버프로그램url" method="post">
+        <h3 class="title">회원가입</h3>
+        <fieldset>
+          <legend class="hidden">회원가입</legend>
+          <div class="row">
+            <div class="col col-1"><label for="id">아이디</label></div>
+            <div class="col col-2"><input type="text" name="id" id="id"></div>
+          </div>
+          <p class="msg-err msg-err-id"></p>
+          <div class="row">
+            <div class="col col-1"><label>성별</label></div>
+            <div class="col col-2">
+              <input type="radio" name="gender" id="male" value="남">
+              <label for="male">남자</label>
+              <input type="radio" name="gender" id="female" value="여">
+              <label for="female">여자</label>
+            </div>
+          </div>
+          <p class="msg-err msg-err-gender"></p>          
+          <div class="row">
+            <div class="col col-1"><label>취미</label></div>
+            <div class="col col-2">
+              <input type="checkbox" name="hobby" id="climbing" value="등산">
+              <label for="climbing">등산1</label>
+              <input type="checkbox" name="hobby" id="swimming" value="수영">
+              <label for="swimming">수영2</label>
+              <input type="checkbox" name="hobby" id="golf" value="골프">
+              <label for="golf">골프3</label>
+            </div>
+          </div>
+          <p class="msg-err msg-err-hobby"></p>
+          <div class="row">
+            <div class="col col-1"><label for="region">지역</label></div>
+            <div class="col col-2">
+              <select name="region" id="region">
+                <option value="">--지역 선택--</option>
+                <option value="서울">서울</option>
+                <option value="부산">부산</option>
+                <option value="을산">을산</option>
+              </select>
+            </div>
+          </div>
+          <p class="msg-err msg-err-region"></p>
+          <div class="row">
+            <div class="col col-1"><label for="birth">생년월일</label></div>
+            <div class="col col-2"><input type="date" name="birth" id="birth"></div>
+          </div>
+          <div class="row btns">
+            <button class="btn btn-join" disabled>회원가입</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+  <script>    
+    const chk = () => {
+      let flag = false;
+      const $msgErrId = document.querySelector('.msg-err.msg-err-id');
+      const $msgErrGender = document.querySelector('.msg-err.msg-err-gender');
+      const $msgErrHobby = document.querySelector('.msg-err.msg-err-hobby');
+      const $msgErrRegion = document.querySelector('.msg-err.msg-err-region');
+
+      //아이디 입력했는지
+      const flag1 = id.value.trim().length > 0;
+      // if(!flag1) {
+      //   $msgErrId.textContent = '오류'
+      // }else {
+      //   $msgErrId.textContent = '';
+      // }
+      
+      $msgErrId.textContent = (!flag1) ?  '아이디를 입력하세요.':  '';
+
+      //성별 선택했는지
+      const flag2 = male.checked || female.checked;
+      $msgErrGender.textContent = (!flag2) ?  '성별을 선택하세요.':  '';
+
+      //취미 선택했는지
+      //case1)
+      // const flag3 = climbing.checked || swimming.checked || golf.checked;
+
+      //case2)
+      const checkboxes = document.querySelectorAll('input[type=checkbox]');
+      const flag3 = [...checkboxes].some(ele=>ele.checked === true);
+      $msgErrHobby.textContent = (!flag3) ?  '취미를 선택하세요.':  '';
+
+      //지역 선택했는지
+      const flag4 = !!region.value;
+      $msgErrRegion.textContent = (!flag4) ?  '지역을 선택하세요.':  '';
+
+      if( flag1 && flag2 && flag3 && flag4){
+        flag = true;
+      }
+      return flag;
+    }
+    const $btnJoin = document.querySelector('.btns .btn-join');
+
+    memberJoin.addEventListener('change',e=>{
+        $btnJoin.disabled = chk() ?  false : true; 
+    });
+
+    // id.addEventListener('change',e=>{
+    //   $btnJoin.disabled = chk() ?  false : true; 
+    // });
+    // male.addEventListener('change', e=>{
+    //   $btnJoin.disabled = chk() ?  false : true; 
+    // });
+    // female.addEventListener('change', e=>{
+    //   $btnJoin.disabled = chk() ?  false : true; 
+    // });
+    // climbing.addEventListener('change',e=>{
+    //   $btnJoin.disabled = chk() ?  false : true; 
+    // });
+    // swimming.addEventListener('change',e=>{
+    //   $btnJoin.disabled = chk() ?  false : true; 
+    // });
+    // golf.addEventListener('change',e=>{
+    //   $btnJoin.disabled = chk() ?  false : true; 
+    // });
+    // region.addEventListener('change',e=>{
+    //   $btnJoin.disabled = chk() ?  false : true; 
+    // });
+  </script>
+</body>
+</html>
