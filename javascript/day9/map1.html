@@ -14,7 +14,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-
+        
         position:absolute;
         z-index: 1001;
         background-color: #333;
@@ -24,15 +24,34 @@
         width:100%;
         height:50px;
       }
+      
       #map {
+        position: relative;
         width:100vw;
         height:100vh;
+      }
+
+      #whereiam{
+        position :absolute;
+        top:150px; left:50px;
+        z-index: 1010;
+        width:50px;
+        background-color: rgb(255,255,255);
+        border:1px solid rgba(0,0,0,0.2);
+        padding:10px;
+        border-radius: 10%;
+        box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.2);
       }
     
       .marker {
         width:12px;height:12px;
         background-color: rgba(255,0,0,.3);
         border-radius: 50%;
+      }
+      .marker2 {
+        width:22px;height:22px;
+        background-color: rgba(0,255,.2);
+        /* border-radius: 50%; */
       }
       .info-win {
         display:flex;
@@ -48,6 +67,7 @@
 </head>
 <body>
 <div id="banner">우리동네 지도</div>
+<div id="whereiam">내위치</div>
 <div id="map"></div>
 
 <script>
@@ -55,6 +75,7 @@ const $map = document.getElementById('map');
 
 //지도생성 옵션
 const mapOptions = {
+    //지도 중심좌표 : 울산KH
     center: new naver.maps.LatLng(35.53501691896486, 129.3107968224373),
     zoom: 20
 };
@@ -64,7 +85,7 @@ const map = new naver.maps.Map($map, mapOptions);
 
 //마커생성
 const marker = new naver.maps.Marker({
-  position : new naver.maps.LatLng(35.53501691896486, 129.3107968224373),
+  position : new naver.maps.LatLng(35.53572480424977, 129.31018051302954), //울산 남부경찰서
   map : map,
   icon : {
     content : `<div class='marker'></div>`,
@@ -95,7 +116,37 @@ naver.maps.Event.addListener(marker,'click',e=>{
   }
 });
 
+//내위치
+const $whereiam = document.getElementById('whereiam');
 
+const markerOfMyPosition = (position) => {
+  // const lat = position.latitude; //위도
+  // const lng = position.longitude; //경도
+  const {latitude:lat,longitude:lng } = position.coords;
+  console.log(lat,lng);
+  const marker = new naver.maps.Marker({
+    position : new naver.maps.LatLng(lat, lng),
+    map : map,
+    icon : {
+      content : `<div class='marker2'></div>`,
+      // size : new naver.maps.Size(24,24),
+      anchor: new naver.maps.Point(6,6)
+    }
+  });
+  console.log(marker);
+};
+
+const h_whereiam = ()=>{
+  console.log('내위치 클릭!');
+
+    new Promise((resolve,reject)=>{
+    //비동기 코드
+    globalThis.navigator.geolocation.getCurrentPosition(resolve,reject);
+  }).then(position => { markerOfMyPosition(position)})
+    .catch(err=>console.log(err.message)); 
+}
+
+$whereiam.addEventListener('click',h_whereiam);
 
 </script>
 </body>

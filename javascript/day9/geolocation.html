@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //성공시 전달되는 객체
+    //GeolocationPosition.coords
+    //GeolocationCoordinates.latitude, GeolocationCoordinates.longitude
+    //실패시 전달되는 객체
+    //GeolocationPositionError.code, GeolocationPositionError.message
+
+
+    // globalThis.navigator.geolocation.getCurrentPosition(
+    //   //성공시
+    //   (position)=>{
+    //     console.log(`위도:${position.coords.latitude}, 경도:${position.coords.longitude}`);
+    //   },
+    //   //실패시
+    //   (err)=>{console.log(err.code, err.errmessge)}
+    // );    
+
+    new Promise((resolve,reject)=>{
+      //비동기 코드
+      globalThis.navigator.geolocation.getCurrentPosition(resolve,reject);
+    }).then(position => console.log(position.coords.latitude, position.coords.longitude))
+      .catch(err=>console.log(err.message)); 
+      
+  </script>
+</body>
+</html>
