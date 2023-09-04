@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul class="list">
+    <!-- <li class="item">항목</li> -->
+  </ul>
+  <button class="btn">클릭</button>
+  <script>
+    const $btn = document.querySelector('.btn');
+    const $list = document.querySelector('.list');
+    const $item = document.querySelector('.list .item');
+    if (!$item) {
+      console.log('li요소가 없음');
+    } 
+    // 옵셔널체이닝 : 객체가 존재할경우만 프로퍼티 탐색!
+    console.log($item?.textContent);
+    $btn.addEventListener('click',({type,target,currentTarget})=>{
+      console.log(type,target,currentTarget);
+      console.log('클릭');
+    });
+  </script>
+</body>
+</html>
