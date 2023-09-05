@@ -9,3 +9,11 @@ const person = {
 for(let prop in person) {
   console.log(prop);
 }
+
+const keys = Object.keys(person); // 프로퍼티 키를 배열로 반환
+console.log(keys);
+
+keys.forEach(key=>console.log(person[key]));
+
+const values = Object.values(person); // 프로퍼티 값을 배열로 반환
+console.log(values);

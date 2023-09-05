@@ -5,7 +5,7 @@ const person = {
   gender: '남',
 };
 
-//typeof 자료형 확인
+//typeof 자료형 확인 : 자료형을 문자열로 반환
 
 console.log(typeof 1);
 console.log(typeof '');

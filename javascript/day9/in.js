@@ -6,7 +6,7 @@ const person = {
 };
 
 // in 연산자 : 객체내에 특정 프로퍼티 유무확인
-console.log('gender' in person);
+console.log('gender' in person); // true
 
 // 이터러블 객체인지 판단
 console.log(Symbol.iterator in person);

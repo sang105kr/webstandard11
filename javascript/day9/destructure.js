@@ -9,7 +9,7 @@ const arr = [1,2,3];
 //destructure (구조분해) : (배열 or 객체리터럴) 구성요소를 개별 변수에 저장
 { //배열의 구조분해
   const [x,y,z] = [1,2,3];
-  console.log(x,y,z);
+  console.log(x,y,z); //1,2,3
 }
 { //객체 리터럴의 구조분해
   const person = {
@@ -39,5 +39,8 @@ const arr = [1,2,3];
     // 객체의 프로퍼티키와 다른 이름의 변수에 개별 저장코자할때
     const { age: x, name: y, blood: z } = person;
     console.log(x, y, z);
+
+
+    // cosnt { latitude:lat, longtitude:lng } = position.coords
   }
 }

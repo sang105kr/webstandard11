@@ -3,7 +3,7 @@
   //       : Symbol()함수를 통해 값을 생성
   const val = Symbol();
   const val2 = Symbol();
-  console.log(val === val2);
+  console.log(val === val2); //false
 
   const obj = { val:1 , val2:2}
   console.log(obj.val, obj.val2);
@@ -11,9 +11,9 @@
 {
   // Symbol(): 매개값은 실볼값의 의미를 부여하는 용도
   const first = Symbol('one');
-  const second = Symbol('two');
+  const second = Symbol('one');
 
-  console.log(first === second);
+  console.log(first === second); //false
 }
 {
   //전역 심볼영역 : key에 해당하는 심볼값을 저장하는 공간
@@ -38,9 +38,9 @@
 
 
   const trafficLight2 = {
-    GREEN : Symbol.for('green'), 
-    RED : Symbol.for('red'), 
-    YELLLOW : Symbol.for('yellow'), 
+    GREEN : Symbol('green'), 
+    RED : Symbol('red'), 
+    YELLLOW : Symbol('yellow'), 
   }
 
   console.log(trafficLight2.GREEN);
