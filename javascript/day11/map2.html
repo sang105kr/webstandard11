@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=uhq6cts1yx"></script>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0d19dafd2380499ec9c17a01cf58170b&libraries=services,clusterer,drawing"></script>
+  <style>
+    * {margin:0; padding:0}
+    #map {width:100vw; height:100vh;}
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <script>
+    // 지도 생성
+    const createMap = (lat, lng)=>{
+      const mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+          mapOption = { 
+              center: new kakao.maps.LatLng(lat, lng), // 지도의 중심좌표
+              level: 3 // 지도의 확대 레벨
+          };
+          
+          // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+          const map = new kakao.maps.Map(mapContainer, mapOption); 
+        }
+        
+    // 내위치 찾기
+    const promise = new Promise( (resolve,reject)=>{
+      navigator.geolocation.getCurrentPosition(resolve,reject);
+
+    } );
+    promise.then(res=>res.coords)                             // 내위치
+           .then(res=>createMap(res.latitude,res.longitude))  // 지도생성
+           .catch(err=>console.log(err.message))
+           .finally(()=>{console.log('내위치 찾기 종료!')});
+
+  </script>
+</body>
+</html>
